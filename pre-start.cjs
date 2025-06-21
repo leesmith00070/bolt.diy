@@ -2,11 +2,8 @@ const { execSync } = require('child_process');
 
 // Get git hash with fallback
 const getGitHash = () => {
-  try {
-    return execSync('git rev-parse --short HEAD').toString().trim();
-  } catch {
-    return 'no-git-info';
-  }
+  // WebContainer doesn't have git available, so return fallback directly
+  return 'no-git-info';
 };
 
 let commitJson = {
